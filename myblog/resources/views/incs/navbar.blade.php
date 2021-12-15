@@ -13,9 +13,37 @@
           <li class="nav-item">
             <a class="nav-link active" href="{{ route('articles') }}">
               <i class="far fa-newspaper"></i>
-              Link
+              Articles
             </a>
           </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          @if (Auth::user())
+            
+          @if (Auth::user()->role === 'admin')
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('admin')}}">
+              <i class="fas fa-user-cog"></i>
+              Administrator
+            </a>
+          </li>
+          @endif
+              
+          <li class="nav-item">
+            <form method="post" action="{{ route('logout')}}">
+              @csrf
+              <button type="submit" class="btn">Logout</button>
+            </form>
+          </li>
+          @else
+              
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('login')}}">
+              Login
+            </a>
+          </li>
+          @endif
+        
         </ul>
       </div>
     </div>

@@ -11,7 +11,7 @@
             <h5 class="dislpay-4 text-center">{{ $article->subtitle }}</h5>
         </div>
         <div class="container">
-            <p class="text-center">{{$article->content }}</p>
+            <p class="text-center">{!!$article->content !!}</p>
 
         </div>
     @endsection
