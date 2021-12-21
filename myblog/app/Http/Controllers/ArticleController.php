@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
+use App\Models\Comment;
 
 class ArticleController extends Controller
 {
@@ -30,7 +31,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        return view('article.create',[
+
+            'comments' => Comment::all()
+        ]);
     }
 
     /**
@@ -46,10 +50,11 @@ class ArticleController extends Controller
 
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
-            'content' => $request->input('content')
+            'content' => $request->input('content'),
+            'comments-id' => $request->input('comment')
         ]);
 
-        return redirect()->route('admin');
+        return redirect()->route('admin')->with('success','article bien enregistre !');
     }
 
     /**
@@ -69,9 +74,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('article.edit',[
+            'article' => $article,
+            'comments' => Comment::all()
+        ]);
     }
 
     /**
@@ -81,9 +89,13 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
-        //
+        $article->title = $request->input('title');
+        $article->subtitle = $request->input('subtitle');
+        $article->content = $request->input('content');
+        $article->save();
+        return redirect()->route('admin')->with('success','article mise a jour !');
     }
 
     /**
@@ -92,8 +104,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function delete(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->route('admin')->with('success','article bien efface');
+        //dd($article);
+
     }
 }

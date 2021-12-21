@@ -9,6 +9,10 @@
               Example button
               <i class="fas fa-arrow-right"></i>
             </button>
+            {{-- <livewire:counter />  --}}
+            {{-- une autre facon d'utiliser  --}}
+            @livewire('counter')
+
         </div>
       </div>
 @endsection
