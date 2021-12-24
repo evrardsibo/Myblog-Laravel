@@ -51,7 +51,7 @@ class ArticleController extends Controller
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
             'content' => $request->input('content'),
-            'comments-id' => $request->input('comment')
+            'comments_id' => $request->input('comment')
         ]);
 
         return redirect()->route('admin')->with('success','article bien enregistre !');

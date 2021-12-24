@@ -17,7 +17,8 @@ class CommentFactory extends Factory
     {
         return [
             
-            'label' => $this->faker->word()
+            'label' => $this->faker->word(),
+            'icon' => $this->faker->word()
         ];
     }
 }

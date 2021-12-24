@@ -11,7 +11,8 @@ class Comment extends Model
     use HasFactory;
     protected $filleble = [
 
-        'label'
+        'label',
+        'icon'
     ];
 
     public function articles()

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class='text-center my-5'>Login page</h1>
+    <h1 class='text-center my-5'>Login Page</h1>
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <div class="card">
@@ -55,8 +55,15 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-user"></i>
                                     {{ __('Login') }}
                                 </button>
+
+                                <a class="btn btn-dark " href="{{ route('auth')}}">
+                                    <i class="fab fa-github"></i>
+                                    {{ __('Se connecter avec Github') }}
+                                    
+                                </a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

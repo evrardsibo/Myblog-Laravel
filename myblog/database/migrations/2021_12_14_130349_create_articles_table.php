@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('subtitle');
             $table->string('slug')->nullable();
             $table->text('content');
-            $table->unsignedBigInteger('comments-id');
+            $table->unsignedBigInteger('comments_id');
             $table->foreign('comments-id')->references('id')->on('comments');
             $table->timestamps();
         });
